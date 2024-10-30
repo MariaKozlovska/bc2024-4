@@ -17,6 +17,12 @@ console.log(`Host: ${host}`);
 console.log(`Port: ${port}`);
 console.log(`Cache directory: ${cache}`);
 
+//перевірка на обов'язкові параметри
+if (!host || !port || !cache) {
+  console.error('All parameters (host, port, cache) are necessary.');
+  process.exit(1);
+}
+
 const server = http.createServer(async (req, res) => {
   const urlParts = req.url.split('/');
   const httpCode = urlParts[1];
